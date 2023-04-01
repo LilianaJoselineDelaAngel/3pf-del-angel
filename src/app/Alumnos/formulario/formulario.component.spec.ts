@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormularioComponent } from './formulario.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MaterialModule } from 'src/app/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('FormularioComponent', () => {
   let component: FormularioComponent;
@@ -10,10 +12,15 @@ describe('FormularioComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FormularioComponent],
-      providers: [
-        { provide: MatDialog, usevalue: {} },
-        { provide: MatDialogRef, usevalue: {} },
+      imports: [
+        MatDialogModule,
+        MaterialModule,
+        ReactiveFormsModule
       ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: []},
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FormularioComponent);

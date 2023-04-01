@@ -10,7 +10,9 @@ describe('ListaComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ListaComponent],
-      providers: [{ provide: MatDialog }, MatDialog.],
+      providers: [
+        { provide: MatDialog , useValue: {}}
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ListaComponent);
